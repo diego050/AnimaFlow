@@ -56,7 +56,7 @@ export function Landing() {
         <section className="flex flex-col lg:flex-row items-center gap-16 pt-8 pb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-            className="flex-1 space-y-8"
+            className="flex-1 space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left"
           >
             <h1 className="font-display font-bold text-5xl md:text-7xl text-text-primary tracking-tighter leading-tight">
               De 3 semanas a hoy mismo.<br/><span className="text-text-secondary">Sin saber animar.</span>
@@ -403,7 +403,7 @@ export function Landing() {
             className="bg-surface-panel/40 border border-border-tech rounded-2xl p-0 backdrop-blur-md relative overflow-hidden shadow-2xl flex flex-col md:flex-row"
           >
             {/* Left side: Information */}
-            <div className="flex-1 p-10 md:p-14 bg-deep-slate/50 border-b md:border-b-0 md:border-r border-border-tech/50 flex flex-col justify-center">
+            <div className="flex-1 p-10 md:p-14 bg-deep-slate/50 border-b md:border-b-0 md:border-r border-border-tech/50 flex flex-col justify-center items-center md:items-start text-center md:text-left">
               <div className="w-12 h-12 bg-mint-precision/10 border border-mint-precision/20 rounded-xl flex items-center justify-center mb-6">
                 <span className="text-mint-precision font-mono text-xl">{'{}'}</span>
               </div>
@@ -412,18 +412,18 @@ export function Landing() {
                 Empieza a crear videos animados de alta calidad sin complicaciones. Únete ahora y transforma tu proceso creativo.
               </p>
               
-              <ul className="space-y-4 font-body text-sm text-text-secondary">
-                <li className="flex items-center gap-3">
-                  <span className="w-5 h-5 rounded-full bg-mint-precision/10 flex items-center justify-center text-mint-precision">✓</span>
-                  Perfecto para creadores de contenido y YouTubers
+              <ul className="space-y-4 font-body text-sm text-text-secondary w-full max-w-sm">
+                <li className="flex items-center justify-center md:justify-start gap-3 text-left">
+                  <span className="w-5 h-5 rounded-full bg-mint-precision/10 flex items-center justify-center text-mint-precision shrink-0">✓</span>
+                  <span>Perfecto para creadores de contenido y YouTubers</span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-5 h-5 rounded-full bg-mint-precision/10 flex items-center justify-center text-mint-precision">✓</span>
-                  Ideal para diseñadores, freelancers y marketers
+                <li className="flex items-center justify-center md:justify-start gap-3 text-left">
+                  <span className="w-5 h-5 rounded-full bg-mint-precision/10 flex items-center justify-center text-mint-precision shrink-0">✓</span>
+                  <span>Ideal para diseñadores, freelancers y marketers</span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-5 h-5 rounded-full bg-mint-precision/10 flex items-center justify-center text-mint-precision">✓</span>
-                  Acceso completo al editor visual sin costo
+                <li className="flex items-center justify-center md:justify-start gap-3 text-left">
+                  <span className="w-5 h-5 rounded-full bg-mint-precision/10 flex items-center justify-center text-mint-precision shrink-0">✓</span>
+                  <span>Acceso completo al editor visual sin costo</span>
                 </li>
               </ul>
             </div>
