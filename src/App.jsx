@@ -78,49 +78,13 @@ function BrandLayout() {
         {/* Forzar impresión de fondos y modo apaisado */}
         <style>{`
           @media print {
-            @page {
-              size: A4 landscape;
-              margin: 10mm;
-            }
-            body, html { 
-              background-color: #0F172A !important;
-              margin: 0;
-              padding: 0;
-            }
-            /* El truco mágico para forzar el layout Desktop en impresión */
-            #full-brand-book {
-              width: 1400px !important; 
-              max-width: 1400px !important;
-              zoom: 0.70 !important;
-              margin: 0 auto !important;
-            }
-            * {
-              -webkit-print-color-adjust: exact !important;
-              print-color-adjust: exact !important;
-            }
-            .page-break {
-              break-before: page;
-              page-break-before: always;
-              height: 0;
-              margin: 0;
-              padding: 0;
-            }
-            h1, h2, h3 {
-              page-break-after: avoid;
-              break-after: avoid;
-            }
-            /* Solo prevenimos el corte en elementos pequeños, no en contenedores gigantes */
-            img, table, tr, .grid-item {
-              page-break-inside: avoid;
-              break-inside: avoid;
-            }
             .print-loading-overlay {
               display: none !important;
             }
           }
         `}</style>
 
-        <div id="full-brand-book" className="w-full max-w-7xl mx-auto relative overflow-hidden bg-deep-slate pb-10">
+        <div id="full-brand-book" className="w-full max-w-7xl mx-auto relative overflow-visible bg-deep-slate pb-10">
           
           {/* Todas las secciones apiladas secuencialmente para el PDF */}
           <div className="relative z-10 print-content-wrapper">
@@ -174,21 +138,32 @@ function BrandLayout() {
         {/* Background Grid Pattern */}
         <div className="fixed inset-0 pointer-events-none bg-grid opacity-50 z-0"></div>
         
-        <div id="brand-content-area" className="relative z-10 p-6 lg:p-12 max-w-7xl mx-auto min-h-full overflow-x-hidden bg-deep-slate">
-          <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<PageWrapper><Cover /></PageWrapper>} />
-              <Route path="identity" element={<PageWrapper><CoreIdentity /></PageWrapper>} />
-              <Route path="colors" element={<PageWrapper><Colors /></PageWrapper>} />
-              <Route path="typography" element={<PageWrapper><Typography /></PageWrapper>} />
-              <Route path="metaphors" element={<PageWrapper><VisualMetaphors /></PageWrapper>} />
-              <Route path="spacing" element={<PageWrapper><Spacing /></PageWrapper>} />
-              <Route path="motion" element={<PageWrapper><Motion /></PageWrapper>} />
-              <Route path="components" element={<PageWrapper><UIComponents /></PageWrapper>} />
-              {/* Fallback routes for undefined pages */}
-              <Route path="*" element={<PageWrapper><div className="flex items-center justify-center h-full"><h1 className="font-mono text-2xl text-cadmium-orange">Work in Progress / Missing Route</h1></div></PageWrapper>} />
-            </Routes>
-          </AnimatePresence>
+        <div id="brand-content-area" className="relative z-10 p-4 lg:p-12 w-full min-h-full bg-deep-slate">
+          
+          <div className="w-full flex flex-col items-center justify-start">
+            <div className="mb-4 opacity-50">
+              <span className="font-mono text-[10px] text-text-secondary tracking-widest uppercase">Vista Previa A4</span>
+            </div>
+            
+            <AnimatePresence mode="wait">
+              <div className="a4-canvas-wrapper">
+                <div className="a4-screen-format">
+                  <Routes location={location} key={location.pathname}>
+                    <Route path="/" element={<PageWrapper><Cover /></PageWrapper>} />
+                    <Route path="identity" element={<PageWrapper><CoreIdentity /></PageWrapper>} />
+                    <Route path="colors" element={<PageWrapper><Colors /></PageWrapper>} />
+                    <Route path="typography" element={<PageWrapper><Typography /></PageWrapper>} />
+                    <Route path="metaphors" element={<PageWrapper><VisualMetaphors /></PageWrapper>} />
+                    <Route path="spacing" element={<PageWrapper><Spacing /></PageWrapper>} />
+                    <Route path="motion" element={<PageWrapper><Motion /></PageWrapper>} />
+                    <Route path="components" element={<PageWrapper><UIComponents /></PageWrapper>} />
+                    {/* Fallback routes for undefined pages */}
+                    <Route path="*" element={<PageWrapper><div className="flex items-center justify-center h-full"><h1 className="font-mono text-2xl text-cadmium-orange">Work in Progress / Missing Route</h1></div></PageWrapper>} />
+                  </Routes>
+                </div>
+              </div>
+            </AnimatePresence>
+          </div>
         </div>
       </main>
     </div>

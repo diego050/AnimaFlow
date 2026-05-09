@@ -34,3 +34,86 @@
   background-image: radial-gradient(circle at center, rgba(51, 65, 85, 0.4) 1px, transparent 1px);
   background-size: 20px 20px;
 }
+
+/* --- Web Presentation Format --- */
+.a4-screen-format {
+  width: 100%;
+  max-width: 842px; /* A4 width representation */
+  margin: 0 auto;
+  /* Standard vertical scrolling for web */
+}
+
+/* Prevenir que los elementos se corten a la mitad al imprimir en PDF */
+.a4-screen-format h1,
+.a4-screen-format h2,
+.a4-screen-format h3,
+.a4-screen-format p,
+.a4-screen-format .grid > div,
+.a4-screen-format header,
+.a4-screen-format img,
+.a4-screen-format blockquote,
+.avoid-break {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.a4-canvas-wrapper {
+  background-color: var(--color-deep-slate);
+  border: 1px solid var(--color-border-tech);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  margin: 0 auto 2rem auto;
+  width: 100%;
+  max-width: 900px;
+}
+
+@media (min-width: 768px) {
+  .a4-canvas-wrapper {
+    padding: 3rem;
+  }
+}
+
+/* --- A4 Print Format --- */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm; /* Margen estándar para que la impresora no corte los bordes */
+  }
+  
+  body, html { 
+    background-color: #0F172A !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Solo desactivamos los estilos web visuales */
+  .a4-canvas-wrapper {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .a4-screen-format {
+    max-width: 100% !important;
+  }
+
+  /* Prevenir cortes en el PDF final */
+  h1, h2, h3, h4, h5, p, .grid > div, header, img, li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  .page-break {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

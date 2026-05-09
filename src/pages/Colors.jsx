@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Copy } from 'lucide-react';
+import { A4Page } from '../components/A4Page';
 
 const colors = [
   { name: 'Deep Slate', hex: '#0F172A', rgb: '15, 23, 42', hsl: '222, 47%, 11%', desc: 'Fondo principal (80% de la interfaz). Dark mode nativo para reducir fatiga visual en edición.', bgClass: 'bg-deep-slate', category: 'Background', darkText: false, usage: 'Fondos base' },
@@ -20,77 +21,92 @@ export function Colors() {
     setTimeout(() => setCopied(null), 2000);
   };
 
-  return (
-    <div className="max-w-5xl">
-      <header className="mb-12 border-b border-border-tech pb-8">
-        <span className="font-mono text-sm text-mint-precision mb-2 block">PALETTE.02</span>
-        <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary tracking-tight mb-4">The Blueprint Palette</h1>
-        <p className="font-body text-lg text-text-secondary max-w-3xl">
-          Evitamos el "AI purple" genérico en favor de tonos que evocan ingeniería e interfaces de edición técnica. 
-          Solo colores esenciales, con alto contraste y legibilidad.
-        </p>
-      </header>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {colors.map((color, idx) => (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: idx * 0.1, duration: 0.4 }}
-            key={color.hex} 
-            className="group bg-surface-panel border border-border-tech rounded-lg overflow-hidden hover:border-mint-precision/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
-          >
-            <div className={`h-32 w-full ${color.bgClass} relative flex items-end p-4 border-b border-border-tech`}>
-              {/* Overlay for contrasting text preview */}
-              <div className={`absolute top-4 right-4 ${color.darkText ? 'bg-deep-slate border-deep-slate text-mint-precision' : 'bg-surface-panel border-border-tech text-text-primary'} px-3 py-1 rounded border shadow-sm`}>
-                <span className="font-mono text-[10px]">Aa Contrast</span>
-              </div>
-              <div className="w-full flex justify-between items-end">
-                <span className={`font-display font-bold text-4xl ${color.darkText ? 'text-deep-slate' : 'text-text-primary'}`}>
-                  Aa
-                </span>
-              </div>
-            </div>
-            
-            <div className="p-5">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="font-display font-semibold text-lg text-text-primary">{color.name}</h3>
-                  <span className="font-mono text-xs text-text-secondary uppercase tracking-wider">{color.category}</span>
-                </div>
-                
-                <button 
-                  onClick={() => copyToClipboard(color.hex)}
-                  className="flex items-center gap-1.5 px-2 py-1 bg-deep-slate border border-border-tech rounded hover:border-text-primary transition-colors cursor-pointer group/btn"
-                >
-                  <span className="font-mono text-sm text-mint-precision">{color.hex}</span>
-                  {copied === color.hex ? <Check size={14} className="text-mint-precision" /> : <Copy size={14} className="text-text-secondary group-hover/btn:text-text-primary" />}
-                </button>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-border-tech/50">
-                <div>
-                  <span className="block font-mono text-[10px] text-text-secondary mb-1">RGB</span>
-                  <span className="font-mono text-sm text-text-primary">{color.rgb}</span>
-                </div>
-                <div>
-                  <span className="block font-mono text-[10px] text-text-secondary mb-1">HSL</span>
-                  <span className="font-mono text-sm text-text-primary">{color.hsl}</span>
-                </div>
-              </div>
-              
-              <p className="font-body text-sm text-text-secondary leading-relaxed mb-4">
-                {color.desc}
-              </p>
-              
-              <div className="bg-deep-slate/50 border border-border-tech rounded p-3">
-                <span className="block font-mono text-[10px] text-text-secondary uppercase mb-1">Uso Funcional</span>
-                <span className="font-body text-sm font-medium text-text-primary">{color.usage}</span>
-              </div>
-            </div>
-          </motion.div>
-        ))}
+  const renderColorCard = (color, idx) => (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: idx * 0.1, duration: 0.4 }}
+      key={color.hex} 
+      className="group bg-surface-panel border border-border-tech rounded-lg overflow-hidden hover:border-mint-precision/50 transition-all duration-300"
+    >
+      <div className={`h-24 w-full ${color.bgClass} relative flex items-end p-4 border-b border-border-tech`}>
+        <div className={`absolute top-4 right-4 ${color.darkText ? 'bg-deep-slate border-deep-slate text-mint-precision' : 'bg-surface-panel border-border-tech text-text-primary'} px-3 py-1 rounded border shadow-sm`}>
+          <span className="font-mono text-[10px]">Aa Contrast</span>
+        </div>
+        <div className="w-full flex justify-between items-end">
+          <span className={`font-display font-bold text-3xl ${color.darkText ? 'text-deep-slate' : 'text-text-primary'}`}>
+            Aa
+          </span>
+        </div>
       </div>
-    </div>
+      
+      <div className="p-4">
+        <div className="flex justify-between items-start mb-2">
+          <div>
+            <h3 className="font-display font-semibold text-base text-text-primary">{color.name}</h3>
+            <span className="font-mono text-[10px] text-text-secondary uppercase tracking-wider">{color.category}</span>
+          </div>
+          
+          <button 
+            onClick={() => copyToClipboard(color.hex)}
+            className="flex items-center gap-1.5 px-2 py-1 bg-deep-slate border border-border-tech rounded hover:border-text-primary transition-colors cursor-pointer group/btn"
+          >
+            <span className="font-mono text-xs text-mint-precision">{color.hex}</span>
+            {copied === color.hex ? <Check size={12} className="text-mint-precision" /> : <Copy size={12} className="text-text-secondary group-hover/btn:text-text-primary" />}
+          </button>
+        </div>
+        
+        <div className="grid grid-cols-2 gap-2 mb-2 pb-2 border-b border-border-tech/50">
+          <div>
+            <span className="block font-mono text-[9px] text-text-secondary mb-0.5">RGB</span>
+            <span className="font-mono text-xs text-text-primary">{color.rgb}</span>
+          </div>
+          <div>
+            <span className="block font-mono text-[9px] text-text-secondary mb-0.5">HSL</span>
+            <span className="font-mono text-xs text-text-primary">{color.hsl}</span>
+          </div>
+        </div>
+        
+        <p className="font-body text-[11px] text-text-secondary leading-relaxed mb-2 line-clamp-2">
+          {color.desc}
+        </p>
+        
+        <div className="bg-deep-slate/50 border border-border-tech rounded p-2">
+          <span className="block font-mono text-[9px] text-text-secondary uppercase mb-0.5">Uso Funcional</span>
+          <span className="font-body text-xs font-medium text-text-primary">{color.usage}</span>
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  return (
+    <>
+      <A4Page className="p-8 flex flex-col justify-center">
+        <header className="mb-6 border-b border-border-tech pb-4">
+          <span className="font-mono text-xs text-mint-precision mb-1 block">PALETTE.02</span>
+          <h1 className="font-display text-3xl md:text-4xl font-bold text-text-primary tracking-tight mb-2">The Blueprint Palette</h1>
+          <p className="font-body text-sm text-text-secondary max-w-3xl">
+            Evitamos el "AI purple" genérico en favor de tonos que evocan ingeniería e interfaces de edición técnica. 
+            Solo colores esenciales, con alto contraste y legibilidad.
+          </p>
+        </header>
+
+        <div className="grid grid-cols-2 gap-6">
+          {colors.slice(0, 2).map((color, idx) => renderColorCard(color, idx))}
+        </div>
+      </A4Page>
+
+      <A4Page className="p-8 flex flex-col justify-center">
+        <div className="grid grid-cols-2 gap-6">
+          {colors.slice(2, 4).map((color, idx) => renderColorCard(color, idx + 2))}
+        </div>
+      </A4Page>
+      
+      <A4Page className="p-8 flex flex-col justify-center">
+        <div className="grid grid-cols-2 gap-6">
+          {colors.slice(4, 6).map((color, idx) => renderColorCard(color, idx + 4))}
+        </div>
+      </A4Page>
+    </>
   );
 }

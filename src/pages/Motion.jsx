@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
+import { A4Page } from '../components/A4Page';
 
 export function Motion() {
   return (
-    <div className="max-w-5xl">
+    <A4Page className="p-8 flex flex-col justify-center">
       <header className="mb-12 border-b border-border-tech pb-8">
         <span className="font-mono text-sm text-mint-precision mb-2 block">MOTION.06</span>
         <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary tracking-tight mb-4">Motion & Animation</h1>
-        <p className="font-body text-lg text-text-secondary max-w-3xl">
+        <p className="font-body text-base text-text-secondary max-w-3xl">
           El movimiento es determinista, rápido y no distrae. Nada de rebotes "juguetones". Los datos se mueven como capas de renderizado.
         </p>
       </header>
@@ -15,11 +16,11 @@ export function Motion() {
         {/* Timing Scale */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
-          className="bg-surface-panel border border-border-tech rounded-lg p-8"
+          className="bg-surface-panel border border-border-tech rounded-lg p-6 lg:p-8"
         >
           <h2 className="font-mono text-cadmium-orange text-sm mb-6 tracking-widest uppercase">Timing Scale</h2>
           
-          <div className="space-y-8">
+          <div className="space-y-6">
             <div>
               <div className="flex justify-between items-end mb-2">
                 <span className="font-mono text-sm text-mint-precision">Fast</span>
@@ -70,7 +71,7 @@ export function Motion() {
         {/* Easing & Microinteractions */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}
-          className="bg-surface-panel border border-border-tech rounded-lg p-8 flex flex-col gap-8"
+          className="bg-surface-panel border border-border-tech rounded-lg p-6 lg:p-8 flex flex-col gap-8"
         >
           <div>
             <h2 className="font-mono text-cadmium-orange text-sm mb-4 tracking-widest uppercase">Standard Ease</h2>
@@ -101,6 +102,6 @@ export function Motion() {
           </div>
         </motion.div>
       </div>
-    </div>
+    </A4Page>
   );
 }

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { A4Page } from '../components/A4Page';
 
 const spacingScale = [
   { value: 4, name: 'Base Unit', css: 'w-1' },
@@ -12,11 +13,11 @@ const spacingScale = [
 
 export function Spacing() {
   return (
-    <div className="max-w-5xl">
+    <A4Page className="p-8 flex flex-col justify-center">
       <header className="mb-12 border-b border-border-tech pb-8">
         <span className="font-mono text-sm text-mint-precision mb-2 block">GRID.05</span>
         <h1 className="font-display text-4xl md:text-5xl font-bold text-text-primary tracking-tight mb-4">Spacing & Layout</h1>
-        <p className="font-body text-lg text-text-secondary max-w-3xl">
+        <p className="font-body text-base text-text-secondary max-w-3xl">
           El sistema está basado en una rígida cuadrícula técnica. Regla estricta: Múltiplos de 4px. Cero espacios arbitrarios.
         </p>
       </header>
@@ -25,15 +26,15 @@ export function Spacing() {
         {/* Spacing Scale */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
-          className="bg-surface-panel border border-border-tech rounded-lg p-8"
+          className="bg-surface-panel border border-border-tech rounded-lg p-6 lg:p-8"
         >
           <h2 className="font-mono text-cadmium-orange text-sm mb-6 tracking-widest uppercase">Base 4px Scale</h2>
           
-          <div className="space-y-6">
+          <div className="space-y-5">
             {spacingScale.map((item, idx) => (
               <div key={item.value} className="flex items-center gap-4">
                 <div className="w-16 shrink-0 font-mono text-xs text-text-secondary text-right">{item.value}px</div>
-                <div className={`h-6 bg-steel-blue border border-mint-precision ${item.css}`}></div>
+                <div className={`h-4 bg-steel-blue border border-mint-precision ${item.css}`}></div>
               </div>
             ))}
           </div>
@@ -42,7 +43,7 @@ export function Spacing() {
         {/* Grid System Diagram */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}
-          className="bg-surface-panel border border-border-tech rounded-lg p-8"
+          className="bg-surface-panel border border-border-tech rounded-lg p-6 lg:p-8"
         >
           <h2 className="font-mono text-cadmium-orange text-sm mb-6 tracking-widest uppercase">Grid System (20px)</h2>
           
@@ -61,6 +62,6 @@ export function Spacing() {
           </div>
         </motion.div>
       </div>
-    </div>
+    </A4Page>
   );
 }
