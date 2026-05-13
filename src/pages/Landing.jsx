@@ -462,7 +462,7 @@ export function Landing() {
                   <label className="block font-mono text-[11px] text-text-secondary uppercase tracking-widest font-semibold">Teléfono (Opcional)</label>
                   <input 
                     className="w-full bg-[#0b101a] border border-border-tech/80 rounded-md px-4 py-3 text-text-primary text-sm focus:outline-none focus:border-mint-precision focus:ring-1 focus:ring-mint-precision transition-all placeholder:text-text-secondary/40 disabled:opacity-50" 
-                    placeholder="+34 600 000 000" 
+                    placeholder="+51 900 000 000" 
                     type="tel"
                     value={formData.telefono}
                     onChange={(e) => setFormData({...formData, telefono: e.target.value})}
