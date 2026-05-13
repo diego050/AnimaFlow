@@ -29,7 +29,7 @@ export function PrivacyPolicy() {
             <ul className="list-disc pl-6 space-y-2">
               <li>Usamos tu email para enviarte acceso a la Beta, actualizaciones del producto y novedades relevantes.</li>
               <li><strong>Nunca vendemos, compartimos ni cedemos tus datos a terceros.</strong></li>
-              <li><strong>Tus proyectos, guiones y animaciones NO se utilizan para entrenar modelos de IA de terceros.</strong></li>
+              <li>Utilizamos tus animaciones de forma interna para mejorar la calidad y precisión de nuestro motor de generación.</li>
               <li>La información técnica que recopilamos (como rendimiento de exportación) es anónima y solo nos sirve para mejorar el producto.</li>
             </ul>
           </section>
