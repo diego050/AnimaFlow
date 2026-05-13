@@ -22,21 +22,22 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { nombre, email, rol } = req.body;
+    const { nombre, email, telefono, rol } = req.body;
 
-    if (!nombre || !email || !rol) {
+    if (!nombre || !email) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
     const data = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>', // You should use a verified domain if you have one. Resend provides a testing domain.
-      to: ['bazand25@gmail.com'], // Send to the user's gmail
+      from: 'Acme <onboarding@resend.dev>',
+      to: ['bazand25@gmail.com'],
       subject: `Nueva solicitud de Beta Privada: ${nombre}`,
       html: `
         <h2>Nueva solicitud para AnimaFlow Beta</h2>
         <p><strong>Nombre:</strong> ${nombre}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Rol:</strong> ${rol}</p>
+        ${telefono ? `<p><strong>Teléfono:</strong> ${telefono}</p>` : ''}
+        ${rol ? `<p><strong>Tipo de contenido:</strong> ${rol}</p>` : ''}
       `,
     });
 

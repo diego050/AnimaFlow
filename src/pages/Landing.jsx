@@ -4,7 +4,7 @@ import { Lock, Clock, Download, Zap, Edit3, Shield, Users, Sparkles, CheckCircle
 import { useState } from 'react';
 
 export function Landing() {
-  const [formData, setFormData] = useState({ nombre: '', email: '', rol: '' });
+  const [formData, setFormData] = useState({ nombre: '', email: '', telefono: '', rol: '' });
   const [status, setStatus] = useState('idle'); // idle | submitting | success | error
 
   const handleSubmit = async (e) => {
@@ -21,7 +21,7 @@ export function Landing() {
       if (!response.ok) throw new Error('Error al enviar form');
       
       setStatus('success');
-      setFormData({ nombre: '', email: '', rol: '' });
+      setFormData({ nombre: '', email: '', telefono: '', rol: '' });
     } catch (error) {
       console.error(error);
       setStatus('error');
@@ -214,7 +214,7 @@ export function Landing() {
                 </div>
                 <button className="bg-white/5 border border-white/10 text-text-secondary px-3 py-1.5 rounded-sm text-xs font-mono hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-1.5 group">
                   <Download className="w-3 h-3 group-hover:text-mint-precision transition-colors" />
-                  Export .ae
+                  Exportar video
                 </button>
               </div>
             </div>
@@ -229,7 +229,7 @@ export function Landing() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { title: "De días a minutos", desc: "Ahorra valioso tiempo. Lo que antes tardaba semanas de trabajo, ahora está listo súper rápido con algunos prompts.", icon: Zap },
-              { title: "Edición híbrida", desc: "Ajusta color o tiempos de entrada/salida visualmente. Para animaciones complejas generadas por código, modifícalas fácilmente con prompts.", icon: Edit3 },
+              { title: "Edición híbrida", desc: "Crea y edita animaciones simplemente describiéndolas con prompts. Ajusta colores, tiempos o cualquier detalle manualmente si lo prefieres.", icon: Edit3 },
               { title: "Exporta donde quieras", desc: "Descarga tu video en alta calidad listo para compartir en tus redes, o llévalo a tu editor favorito.", icon: Download }
             ].map((feature, i) => {
               const Icon = feature.icon;
@@ -370,7 +370,7 @@ export function Landing() {
                 </div>
                 <div className="relative z-10">
                   <div className="flex justify-between items-end mb-3">
-                    <span className="font-mono text-[10px] text-text-secondary tracking-widest">render_v1.ae</span>
+                    <span className="font-mono text-[10px] text-text-secondary tracking-widest">render_v1.mp4</span>
                     <span className="font-mono text-[10px] text-mint-precision">100%</span>
                   </div>
                   <div className="w-full h-1 bg-surface-panel rounded-full overflow-hidden">
@@ -388,7 +388,7 @@ export function Landing() {
                   <span className="w-2 h-2 rounded-full bg-mint-precision animate-pulse"></span> Paso 4
                 </div>
                 <h3 className="font-display font-bold text-2xl text-text-primary mb-3">Exportación Multiformato</h3>
-                <p className="font-body text-sm text-text-secondary leading-relaxed">Descarga en MP4 o .ae. Puedes adaptar tus videos de 16:9 a 9:16 al instante con nuevos hooks y fragmentos perfectos para Reels y TikTok.</p>
+                <p className="font-body text-sm text-text-secondary leading-relaxed">Descarga en MP4 o formato editable. Puedes adaptar tus videos de 16:9 a 9:16 al instante con nuevos hooks y fragmentos perfectos para Reels y TikTok.</p>
               </div>
             </motion.div>
           </div>
@@ -457,13 +457,24 @@ export function Landing() {
                     disabled={status === 'submitting'}
                   />
                 </div>
+
+                <div className="space-y-2">
+                  <label className="block font-mono text-[11px] text-text-secondary uppercase tracking-widest font-semibold">Teléfono (Opcional)</label>
+                  <input 
+                    className="w-full bg-[#0b101a] border border-border-tech/80 rounded-md px-4 py-3 text-text-primary text-sm focus:outline-none focus:border-mint-precision focus:ring-1 focus:ring-mint-precision transition-all placeholder:text-text-secondary/40 disabled:opacity-50" 
+                    placeholder="+34 600 000 000" 
+                    type="tel"
+                    value={formData.telefono}
+                    onChange={(e) => setFormData({...formData, telefono: e.target.value})}
+                    disabled={status === 'submitting'}
+                  />
+                </div>
                 
                 <div className="space-y-2">
                   <label className="block font-mono text-[11px] text-text-secondary uppercase tracking-widest font-semibold">¿Qué tipo de contenido creas? (Opcional)</label>
                   <div className="relative">
                     <select 
                       className="w-full bg-[#0b101a] border border-border-tech/80 rounded-md px-4 py-3 text-text-secondary text-sm focus:outline-none focus:border-mint-precision focus:ring-1 focus:ring-mint-precision transition-all appearance-none cursor-pointer disabled:opacity-50" 
-                      required
                       value={formData.rol}
                       onChange={(e) => setFormData({...formData, rol: e.target.value})}
                       disabled={status === 'submitting'}

@@ -13,27 +13,51 @@ export function PrivacyPolicy() {
           <p className="text-sm font-mono text-text-secondary/60 uppercase tracking-widest border-b border-border-tech pb-4">Última actualización: Mayo 2026</p>
           
           <section>
-            <h2 className="text-2xl text-text-primary font-display font-bold mt-8 mb-4">1. Recopilación de Información</h2>
-            <p>En AnimaFlow, valoramos su privacidad por encima de todo. Al ser una infraestructura determinista B2B, recopilamos únicamente la información técnica y de contacto estrictamente necesaria para proveer el servicio, incluyendo su correo electrónico corporativo al registrarse en nuestra Beta Privada.</p>
+            <h2 className="text-2xl text-text-primary font-display font-bold mt-8 mb-4">1. Qué datos recopilamos</h2>
+            <p className="mb-3">Para ofrecerte acceso a la Beta de AnimaFlow, solo te pedimos la información estrictamente necesaria:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li><strong>Nombre y email:</strong> para crear tu cuenta y contactarte sobre el servicio.</li>
+              <li><strong>Teléfono (opcional):</strong> solo si deseas recibir notificaciones o soporte directo.</li>
+              <li><strong>Tipo de contenido (opcional):</strong> para entender mejor tu perfil y mejorar la experiencia.</li>
+            </ul>
+            <p className="mt-3">No recopilamos datos sensibles ni información personal más allá de lo necesario para el funcionamiento del servicio.</p>
           </section>
 
           <section>
-            <h2 className="text-2xl text-text-primary font-display font-bold mt-8 mb-4">2. Uso de los Datos (Local-First)</h2>
-            <p className="mb-4">Nos tomamos muy en serio la seguridad de los activos de su empresa:</p>
+            <h2 className="text-2xl text-text-primary font-display font-bold mt-8 mb-4">2. Cómo usamos tus datos</h2>
+            <p className="mb-3">Tus datos tienen un único propósito: ayudarte a crear contenido con AnimaFlow. En concreto:</p>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Sus datos, guiones y parámetros <strong>NO</strong> son utilizados para entrenar modelos de IA de terceros.</li>
-              <li>Garantizamos un enfoque Local-First para los procesos de renderizado siempre que la configuración de su cuenta lo permita.</li>
-              <li>La telemetría recopilada es puramente técnica (rendimiento de exportación, uso de nodos) y completamente anónima.</li>
+              <li>Usamos tu email para enviarte acceso a la Beta, actualizaciones del producto y novedades relevantes.</li>
+              <li><strong>Nunca vendemos, compartimos ni cedemos tus datos a terceros.</strong></li>
+              <li><strong>Tus proyectos, guiones y animaciones NO se utilizan para entrenar modelos de IA de terceros.</strong></li>
+              <li>La información técnica que recopilamos (como rendimiento de exportación) es anónima y solo nos sirve para mejorar el producto.</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl text-text-primary font-display font-bold mt-8 mb-4">3. Seguridad Estructural</h2>
-            <p>Implementamos medidas de seguridad de grado empresarial y cifrado de extremo a extremo para proteger sus guiones, pistas de audio locales y flujos de edición nodal (archivos de proyecto .AEP y JSON) durante el tránsito y en reposo.</p>
+            <h2 className="text-2xl text-text-primary font-display font-bold mt-8 mb-4">3. Tus derechos</h2>
+            <p className="mb-3">Tienes control total sobre tus datos. En cualquier momento puedes:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li><strong>Acceder</strong> a los datos que tenemos sobre ti.</li>
+              <li><strong>Rectificar</strong> información incorrecta o desactualizada.</li>
+              <li><strong>Eliminar</strong> tu cuenta y todos tus datos asociados.</li>
+              <li><strong>Oponerte</strong> a recibir comunicaciones comerciales.</li>
+            </ul>
+            <p className="mt-3">Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:privacy@animaflow.io" className="text-mint-precision hover:underline">privacy@animaflow.io</a> y te responderemos en un plazo máximo de 30 días.</p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl text-text-primary font-display font-bold mt-8 mb-4">4. Seguridad</h2>
+            <p>Protegemos tus datos con cifrado durante la transmisión y el almacenamiento. Nuestros servidores cumplen con los estándares actuales de seguridad, y limitamos el acceso a tu información únicamente al personal técnico necesario para mantener el servicio funcionando.</p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl text-text-primary font-display font-bold mt-8 mb-4">5. Cookies y tecnologías similares</h2>
+            <p>AnimaFlow utiliza cookies estrictamente necesarias para el funcionamiento del servicio (como mantener tu sesión activa). No utilizamos cookies de rastreo ni de terceros con fines publicitarios.</p>
           </section>
 
           <section className="mt-12 pt-8 border-t border-border-tech text-sm text-center">
-            <p>Si tiene alguna duda sobre nuestra arquitectura de privacidad, contáctenos directamente en <a href="mailto:privacy@animaflow.io" className="text-mint-precision hover:underline">privacy@animaflow.io</a></p>
+            <p>Si tienes alguna duda sobre nuestra política de privacidad, contáctanos en <a href="mailto:privacy@animaflow.io" className="text-mint-precision hover:underline">privacy@animaflow.io</a></p>
           </section>
         </div>
       </main>
