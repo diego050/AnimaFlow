@@ -18,7 +18,7 @@ export function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-2xl text-text-primary font-display font-bold mt-8 mb-4">3. Propiedad Intelectual Total</h2>
+            <h2 className="text-2xl text-text-primary font-display font-bold mt-8 mb-4">2. Propiedad Intelectual Total</h2>
             <p>Creemos en el control creativo absoluto:</p>
             <ul className="list-disc pl-6 space-y-2 mt-4">
               <li><strong>Usted retiene el 100% de los derechos comerciales</strong> sobre cualquier video, animación o fotograma generado en nuestra plataforma.</li>
