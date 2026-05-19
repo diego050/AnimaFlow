@@ -43,7 +43,7 @@ export function PrivacyPolicy() {
               <li><strong>Eliminar</strong> tu cuenta y todos tus datos asociados.</li>
               <li><strong>Oponerte</strong> a recibir comunicaciones comerciales.</li>
             </ul>
-            <p className="mt-3">Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:privacy@animaflow.io" className="text-mint-precision hover:underline">privacy@animaflow.io</a> y te responderemos en un plazo máximo de 30 días.</p>
+            <p className="mt-3">Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:animaflow4@gmail.com" className="text-mint-precision hover:underline">animaflow4@gmail.com</a> y te responderemos en un plazo máximo de 30 días.</p>
           </section>
 
           <section>
@@ -57,7 +57,7 @@ export function PrivacyPolicy() {
           </section>
 
           <section className="mt-12 pt-8 border-t border-border-tech text-sm text-center">
-            <p>Si tienes alguna duda sobre nuestra política de privacidad, contáctanos en <a href="mailto:privacy@animaflow.io" className="text-mint-precision hover:underline">privacy@animaflow.io</a></p>
+            <p>Si tienes alguna duda sobre nuestra política de privacidad, contáctanos en <a href="mailto:animaflow4@gmail.com" className="text-mint-precision hover:underline">animaflow4@gmail.com</a></p>
           </section>
         </div>
       </main>
